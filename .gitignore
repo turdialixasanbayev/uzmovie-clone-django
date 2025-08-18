@@ -212,5 +212,6 @@ __marimo__/
 
 .idea/
 .vscode/
-media/
+mediafiles/
 staticfiles/
+.envs/
