@@ -215,3 +215,4 @@ __marimo__/
 mediafiles/
 staticfiles/
 .envs/
+locale/

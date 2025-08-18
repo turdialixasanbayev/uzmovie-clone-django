@@ -1,3 +1,0 @@
--r requirements/base.txt
-
-django-environ==0.12.0

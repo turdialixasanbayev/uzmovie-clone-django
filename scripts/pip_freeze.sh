@@ -1,1 +1,1 @@
-pip freeze > requirements/base.txt
+pip freeze > requirements/requirements.txt
