@@ -59,6 +59,14 @@ urlpatterns += i18n_patterns(
     # Translated URLs
     # local urls
     #
+    path(
+        '',
+        include('apps.contact.urls')
+    ),
+    path(
+        '',
+        include('apps.users.urls')
+    ),
 )
 
 if settings.DEBUG:

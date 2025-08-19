@@ -38,9 +38,7 @@ DEBUG = True
 # ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 ALLOWED_HOSTS = ['*']
 
-# AUTH_USER_MODEL = 'users.CustomUser'
-
-### AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Application definition
@@ -66,6 +64,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.users',
+    'apps.contact',
 ]
 
 
@@ -231,11 +230,6 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# AUTHENTICATION_BACKENDS = [
-#     "users.backends.PhoneBackend",                         # phone + password
-#     "django.contrib.auth.backends.ModelBackend"           # admin & default
-# ]
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
