@@ -67,6 +67,10 @@ urlpatterns += i18n_patterns(
         '',
         include('apps.users.urls')
     ),
+    path(
+        '',
+        include('apps.category.urls')
+    ),
 )
 
 if settings.DEBUG:

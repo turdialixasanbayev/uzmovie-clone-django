@@ -18,11 +18,6 @@ class Contact(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True, db_index=True)
     message = RichTextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Contact"
-        verbose_name_plural = "Contacts"
 
     def __str__(self):
-        return f"{self.pk} - {self.name}"
+        return self.name
