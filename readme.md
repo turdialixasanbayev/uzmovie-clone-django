@@ -11,3 +11,9 @@ Loyihani boshlab oldik django ni sozladik
 barcha kerakli kutbxonalarni yuklab sozlab oldik
 
 * Endigi navbat auth tizimiga (model yozish saytga qarab)
+
+* auth tizimi yakullandi
+
+* contact modeli yozib admin register qilindi
+
+* Category va tag modellari yozilib admin registration qilindi
