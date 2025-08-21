@@ -17,3 +17,5 @@ barcha kerakli kutbxonalarni yuklab sozlab oldik
 * contact modeli yozib admin register qilindi
 
 * Category va tag modellari yozilib admin registration qilindi
+
+* Ish rejasi yozildi
