@@ -31,7 +31,7 @@ class FilmAdmin(admin.ModelAdmin):
         'year',
         'language',
         'duration',
-        'age_limit',
+        'age_type',
         'release_date',
     )
     readonly_fields = (
@@ -46,6 +46,6 @@ class FilmAdmin(admin.ModelAdmin):
     list_filter = (
         'language',
         'year',
-        'age_limit',
+        'age_type',
         'release_date',
     )

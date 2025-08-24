@@ -8,19 +8,19 @@ import uuid
 
 
 class Film(models.Model):
-    LANGUAGE = (
-        ('EN', 'English'),
-        ('RU', 'Russian'),
-        ('TR', 'Turkish'),
-        ('UZ', 'Uzbek'),
-    )
-    AGE_TYPE = (
-        (0, '0+'),
-        (6, '6+'),
-        (12, '12+'),
-        (16, '16+'),
-        (18, '18+'),
-    )
+    class LANGUAGE(models.TextChoices):
+        EN = 'EN', 'English'
+        RU = 'RU', 'Russian'
+        TR = 'TR', 'Turkish'
+        UZ = 'UZ', 'Uzbek'
+
+    class AGE_TYPE(models.IntegerChoices):
+        ZERO = 0, '0+'
+        SIX = 6, '6+'
+        TWELVE = 12, '12+'
+        SIXTEEN = 16, '16+'
+        EIGHTEEN = 18, '18+'
+
     name = models.CharField(max_length=350, unique=True, db_index=True)
     slug = models.SlugField(max_length=450, unique=True,
                             null=True, blank=True, db_index=True)
@@ -39,9 +39,9 @@ class Film(models.Model):
     bot_code = models.CharField(
         max_length=10, unique=True, null=True, blank=True)
     year = models.PositiveIntegerField(null=True, blank=True)
-    language = models.CharField(max_length=50, choices=LANGUAGE, default='UZ')
+    language = models.CharField(max_length=2, choices=LANGUAGE.choices, default=LANGUAGE.UZ)
     duration = models.DurationField(null=True, blank=True)
-    age_limit = models.IntegerField(choices=AGE_TYPE, default=0)
+    age_type = models.IntegerField(choices=AGE_TYPE.choices, default=AGE_TYPE.ZERO)
     views = models.PositiveIntegerField(default=0)
     release_date = models.DateTimeField(auto_now_add=True)
 
