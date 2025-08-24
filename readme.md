@@ -19,3 +19,9 @@ barcha kerakli kutbxonalarni yuklab sozlab oldik
 * Category va tag modellari yozilib admin registration qilindi
 
 * Ish rejasi yozildi
+
+* Barcha modellar yozib bolindi kengaytmalar bilan
+
+* Barcha modellar adminkaga professional tarzda register qilindi
+
+* Endigi navbat logikaga
