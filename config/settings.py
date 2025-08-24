@@ -66,6 +66,8 @@ LOCAL_APPS = [
     'apps.users',
     'apps.contact',
     'apps.category',
+    'apps.film',
+    'apps.wishlist',
 ]
 
 

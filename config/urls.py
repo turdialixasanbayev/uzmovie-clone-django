@@ -71,6 +71,14 @@ urlpatterns += i18n_patterns(
         '',
         include('apps.category.urls')
     ),
+    path(
+        '',
+        include('apps.film.urls')
+    ),
+    path(
+        '',
+        include('apps.wishlist.urls')
+    ),
 )
 
 if settings.DEBUG:
