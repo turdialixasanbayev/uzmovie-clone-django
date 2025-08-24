@@ -14,6 +14,13 @@ class Film(models.Model):
         ('TR', 'Turkish'),
         ('UZ', 'Uzbek'),
     )
+    AGE_TYPE = (
+        (0, '0+'),
+        (6, '6+'),
+        (12, '12+'),
+        (16, '16+'),
+        (18, '18+'),
+    )
     name = models.CharField(max_length=350, unique=True, db_index=True)
     slug = models.SlugField(max_length=450, unique=True,
                             null=True, blank=True, db_index=True)
@@ -34,31 +41,31 @@ class Film(models.Model):
     year = models.PositiveIntegerField(null=True, blank=True)
     language = models.CharField(max_length=50, choices=LANGUAGE, default='UZ')
     duration = models.DurationField(null=True, blank=True)
-    age_limit = models.CharField(max_length=3, default='0')
+    age_limit = models.IntegerField(choices=AGE_TYPE, default=0)
     views = models.PositiveIntegerField(default=0)
     release_date = models.DateTimeField(auto_now_add=True)
 
     @property
-    def views_count(self):
-        return self.views if self.views else "No Views"
+    def views_count(self) -> int:
+        return self.views or 0
 
     @property
-    def reviews_count(self):
-        return self.review_film.count() if self.review_film.count() else "No Reviews"
+    def reviews_count(self) -> int:
+        return self.review_film.count() or 0
 
     @property
-    def likes_count(self):
+    def likes_count(self) -> int:
         Reaction = apps.get_model('film', 'Reaction')
-        return self.reactions.filter(reaction=Reaction.LIKE).count() if self.reactions.filter(reaction=Reaction.LIKE).count() else "No Likes"
+        return self.reactions.filter(reaction=Reaction.LIKE).count() or 0
 
     @property
-    def dislikes_count(self):
+    def dislikes_count(self) -> int:
         Reaction = apps.get_model('film', 'Reaction')
-        return self.reactions.filter(reaction=Reaction.DISLIKE).count() if self.reactions.filter(reaction=Reaction.DISLIKE).count() else "No Dislikes"
+        return self.reactions.filter(reaction=Reaction.DISLIKE).count() or 0
 
     @property
-    def rating(self):
-        return self.likes_count() - self.dislikes_count()
+    def rating(self) -> int:
+        return self.likes_count - self.dislikes_count
 
     # def get_absolute_url(self, *args, **kwargs):
     #     return reverse('film_detail', kwargs={'slug': self.slug})
