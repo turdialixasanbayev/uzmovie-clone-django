@@ -20,7 +20,7 @@ class ContactAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    search_fields = ("name", "email", "phone_number",)
+    search_fields = ("name", "email", "phone_number", 'telegram_username',)
     readonly_fields = ('id', "created_at",)
 
     fieldsets = (
