@@ -18,14 +18,12 @@ class CustomUser(AbstractUser):
         choices=GenderChoices.choices,
         null=True,
         blank=True,
-        verbose_name="Gender",
         help_text="Select your gender",
         db_index=True,
     )
     birth_date = models.DateField(
         null=True,
         blank=True,
-        verbose_name="Date of Birth",
         help_text="Enter your birth date",
     )
 

@@ -13,7 +13,6 @@ class Review(models.Model):
         to=User,
         on_delete=models.CASCADE,
         related_name="review",
-        verbose_name="User",
         help_text="The user who wrote this review",
         db_index=True
     )
@@ -21,24 +20,20 @@ class Review(models.Model):
         to="film.Film",
         on_delete=models.CASCADE,
         related_name="reviews",
-        verbose_name="Film",
         help_text="The film that was reviewed",
         db_index=True
     )
     description = RichTextField(
         null=True,
         blank=True,
-        verbose_name="Review Text",
         help_text="Write your review about the film"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Created At",
         help_text="The date and time when the review was created"
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name="Updated At",
         help_text="The date and time when the review was last updated"
     )
 

@@ -14,7 +14,6 @@ class Reaction(models.Model):
         "film.Film",
         on_delete=models.CASCADE,
         related_name="reactions",
-        verbose_name="Film",
         help_text="The film that the user reacted to",
         db_index=True,
     )
@@ -22,18 +21,15 @@ class Reaction(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="reaction",
-        verbose_name="User",
         help_text="The user who reacted to the film",
         db_index=True,
     )
     reaction = models.SmallIntegerField(
         choices=ReactionType.choices,
-        verbose_name="Reaction",
         help_text="User's reaction to the film (like or dislike)",
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Created At",
         help_text="The date and time when the reaction was created",
     )
 

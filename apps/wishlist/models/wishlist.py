@@ -12,12 +12,10 @@ class Wishlist(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name="wishlist",
-        verbose_name="User",
         help_text="The user who owns this wishlist"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Created At",
         help_text="The date and time when the wishlist was created"
     )
 

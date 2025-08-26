@@ -11,19 +11,16 @@ class WishListItem(models.Model):
         to=Wishlist,
         on_delete=models.CASCADE,
         related_name="wishlist_items",
-        verbose_name="Wishlist",
         help_text="The wishlist this item belongs to"
     )
     movie = models.ForeignKey(
         to=Film,
         on_delete=models.CASCADE,
         related_name="in_wishlists",
-        verbose_name="Movie",
         help_text="The movie added to the wishlist"
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Added At",
         help_text="The date and time when the movie was added to the wishlist"
     )
 
