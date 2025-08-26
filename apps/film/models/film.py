@@ -51,17 +51,23 @@ class Film(models.Model):
 
     @property
     def reviews_count(self) -> int:
-        return self.review_film.count() or 0
+        return self.reviews.count() or 0
 
     @property
     def likes_count(self) -> int:
+        """Return the number of likes for this film."""
         Reaction = apps.get_model('film', 'Reaction')
-        return self.reactions.filter(reaction=Reaction.LIKE).count() or 0
+        return self.reactions.filter(
+            reaction=Reaction.ReactionType.LIKE
+        ).count()
 
     @property
     def dislikes_count(self) -> int:
+        """Return the number of dislikes for this film."""
         Reaction = apps.get_model('film', 'Reaction')
-        return self.reactions.filter(reaction=Reaction.DISLIKE).count() or 0
+        return self.reactions.filter(
+            reaction=Reaction.ReactionType.DISLIKE
+        ).count()
 
     @property
     def rating(self) -> int:
