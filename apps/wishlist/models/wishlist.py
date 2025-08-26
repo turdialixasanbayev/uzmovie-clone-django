@@ -5,12 +5,40 @@ User = get_user_model()
 
 
 class Wishlist(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wishlist_user')
-    created_at = models.DateTimeField(auto_now_add=True)
+    """
+    Model representing a user's wishlist.
+    """
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="wishlist",
+        verbose_name="User",
+        help_text="The user who owns this wishlist"
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Created At",
+        help_text="The date and time when the wishlist was created"
+    )
 
     @property
-    def items_count(self):
-        return self.items.count()
+    def items_count(self) -> int:
+        """Returns the number of items in the wishlist."""
+        return self.wishlist_items.count()
 
-    def __str__(self):
-        return f"Wishlist of {self.user.username}"
+    def __str__(self) -> str:
+        """
+        Return a string representation of the wishlist.
+        """
+        return f"Wishlist of {self.user.get_full_name() or self.user.username}"
+
+    class Meta:
+        """
+        Meta options for the wishlist model.
+        """
+        verbose_name = "Wishlist"
+        verbose_name_plural = "Wishlists"
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["user"]),
+        ]
