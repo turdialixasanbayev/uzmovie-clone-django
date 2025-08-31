@@ -10,12 +10,14 @@ class Wishlist(models.Model):
     """
     user = models.OneToOneField(
         User,
+        db_index=True,
         on_delete=models.CASCADE,
         related_name="wishlist",
         help_text="The user who owns this wishlist"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when the wishlist was created"
     )
 
@@ -39,4 +41,5 @@ class Wishlist(models.Model):
         ordering = ["-created_at"]
         indexes = [
             models.Index(fields=["user"]),
+            models.Index(fields=["created_at"]),
         ]

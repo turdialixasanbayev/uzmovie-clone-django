@@ -7,7 +7,7 @@ class Category(models.Model):
     """
     Category model
     """
-    name = models.CharField(max_length=150, unique=True)
+    name = models.CharField(max_length=150, unique=True, db_index=True, help_text="Enter the category name")
     parent = models.ForeignKey(
         'self',
         on_delete=models.CASCADE,
@@ -15,8 +15,10 @@ class Category(models.Model):
         blank=True,
         null=True,
         limit_choices_to={'parent__isnull': True},
+        db_index=True,
+        help_text="Select a parent category (if any)"
     )
-    slug = models.SlugField(max_length=155, unique=True, blank=True, null=True)
+    slug = models.SlugField(max_length=155, unique=True, blank=True, null=True, db_index=True, help_text="Auto-generated from the name")
     image = models.ImageField(upload_to='categories/', blank=True, null=True)
     description = RichTextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -29,6 +31,11 @@ class Category(models.Model):
         ordering = ['name']
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+        indexes = [
+            models.Index(fields=['name']),
+            models.Index(fields=['slug']),
+            models.Index(fields=['parent']),
+        ]
 
     def save(self, *args, **kwargs):
         """

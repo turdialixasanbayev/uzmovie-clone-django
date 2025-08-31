@@ -56,6 +56,7 @@ class Film(models.Model):
         to="category.Category",
         on_delete=models.CASCADE,
         related_name="films",
+        db_index=True,
         help_text="The category this film belongs to",
     )
     tags = models.ManyToManyField(
@@ -68,6 +69,7 @@ class Film(models.Model):
         to="film.Country",
         on_delete=models.CASCADE,
         related_name="film_country",
+        db_index=True,
         help_text="Country where the film was produced",
     )
     description = RichTextField(
@@ -80,12 +82,14 @@ class Film(models.Model):
         unique=True,
         null=True,
         blank=True,
+        db_index=True,
         help_text="YouTube or other video platform trailer URL",
     )
     bot_link = models.URLField(
         max_length=300,
         null=True,
         blank=True,
+        db_index=True,
         help_text="Telegram bot link to access the film",
     )
     bot_code = models.CharField(
@@ -93,35 +97,42 @@ class Film(models.Model):
         unique=True,
         null=True,
         blank=True,
+        db_index=True,
         help_text="Unique bot access code for the film",
     )
     year = models.PositiveIntegerField(
         null=True,
         blank=True,
+        db_index=True,
         help_text="The year the film was released",
     )
     language = models.CharField(
         max_length=2,
         choices=LANGUAGE.choices,
         default=LANGUAGE.UZ,
+        db_index=True,
         help_text="Main language of the film",
     )
     duration = models.DurationField(
         null=True,
         blank=True,
+        db_index=True,
         help_text="Film duration in HH:MM:SS",
     )
     age_type = models.IntegerField(
         choices=AGE_TYPE.choices,
         default=AGE_TYPE.ZERO,
+        db_index=True,
         help_text="Minimum recommended viewer age",
     )
     views = models.PositiveIntegerField(
         default=0,
+        db_index=True,
         help_text="Total number of views",
     )
     release_date = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when the film was added to the system",
     )
 
@@ -187,6 +198,16 @@ class Film(models.Model):
             models.Index(fields=["name"]),
             models.Index(fields=["year"]),
             models.Index(fields=["release_date"]),
+            models.Index(fields=["slug"]),
+            models.Index(fields=["category"]),
+            models.Index(fields=["country"]),
+            models.Index(fields=["trailer_link"]),
+            models.Index(fields=["bot_link"]),
+            models.Index(fields=["bot_code"]),
+            models.Index(fields=["language"]),
+            models.Index(fields=["duration"]),
+            models.Index(fields=["age_type"]),
+            models.Index(fields=["views"]),
         ]
 
     def __str__(self) -> str:

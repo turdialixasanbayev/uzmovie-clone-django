@@ -30,10 +30,12 @@ class Review(models.Model):
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when the review was created"
     )
     updated_at = models.DateTimeField(
         auto_now=True,
+        db_index=True,
         help_text="The date and time when the review was last updated"
     )
 
@@ -53,7 +55,8 @@ class Review(models.Model):
         indexes = [
             models.Index(fields=["user"]),
             models.Index(fields=["film"]),
-            models.Index(fields=["-created_at"]),
+            models.Index(fields=["created_at"]),
+            models.Index(fields=["updated_at"]),
         ]
         constraints = [
             models.UniqueConstraint(

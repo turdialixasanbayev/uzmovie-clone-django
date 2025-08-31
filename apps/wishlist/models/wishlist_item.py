@@ -11,16 +11,19 @@ class WishListItem(models.Model):
         to=Wishlist,
         on_delete=models.CASCADE,
         related_name="wishlist_items",
-        help_text="The wishlist this item belongs to"
+        help_text="The wishlist this item belongs to",
+        db_index=True
     )
     movie = models.ForeignKey(
         to=Film,
         on_delete=models.CASCADE,
         related_name="in_wishlists",
+        db_index=True,
         help_text="The movie added to the wishlist"
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when the movie was added to the wishlist"
     )
 
@@ -40,6 +43,7 @@ class WishListItem(models.Model):
         indexes = [
             models.Index(fields=["wishlist"]),
             models.Index(fields=["movie"]),
+            models.Index(fields=["added_at"]),
         ]
 
     def __str__(self) -> str:

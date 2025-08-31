@@ -20,10 +20,12 @@ class Country(models.Model):
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when this country was added",
     )
     updated_at = models.DateTimeField(
         auto_now=True,
+        db_index=True,
         help_text="The date and time when this country was last updated",
     )
 
@@ -37,6 +39,8 @@ class Country(models.Model):
         indexes = [
             models.Index(fields=["name"]),
             models.Index(fields=["code"]),
+            models.Index(fields=["created_at"]),
+            models.Index(fields=["updated_at"]),
         ]
 
     def __str__(self) -> str:

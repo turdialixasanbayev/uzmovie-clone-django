@@ -24,6 +24,7 @@ class CustomUser(AbstractUser):
     birth_date = models.DateField(
         null=True,
         blank=True,
+        db_index=True,
         help_text="Enter your birth date",
     )
 
@@ -40,3 +41,12 @@ class CustomUser(AbstractUser):
         verbose_name = "User"
         verbose_name_plural = "Users"
         ordering = ["-date_joined"]
+        indexes = [
+            models.Index(fields=['username']),
+            models.Index(fields=['email']),
+            models.Index(fields=['first_name']),
+            models.Index(fields=['last_name']),
+            models.Index(fields=['date_joined']),
+            models.Index(fields=['gender']),
+            models.Index(fields=['birth_date']),
+        ]

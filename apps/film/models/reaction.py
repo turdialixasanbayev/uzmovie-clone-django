@@ -27,9 +27,11 @@ class Reaction(models.Model):
     reaction = models.SmallIntegerField(
         choices=ReactionType.choices,
         help_text="User's reaction to the film (like or dislike)",
+        db_index=True,
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
+        db_index=True,
         help_text="The date and time when the reaction was created",
     )
 
@@ -47,6 +49,7 @@ class Reaction(models.Model):
             models.Index(fields=["film"]),
             models.Index(fields=["user"]),
             models.Index(fields=["reaction"]),
+            models.Index(fields=["created_at"]),
         ]
 
     def __str__(self) -> str:
