@@ -16,7 +16,7 @@ class Category(models.Model):
         null=True,
         limit_choices_to={'parent__isnull': True},
     )
-    slug = models.SlugField(max_length=150, unique=True, blank=True, null=True)
+    slug = models.SlugField(max_length=155, unique=True, blank=True, null=True)
     image = models.ImageField(upload_to='categories/', blank=True, null=True)
     description = RichTextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
