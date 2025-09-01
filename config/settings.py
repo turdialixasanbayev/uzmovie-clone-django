@@ -41,6 +41,21 @@ ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'users.CustomUser'
 
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3,
+}
+
+
 # Application definition
 
 
@@ -54,12 +69,15 @@ BASE_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'modeltranslation',
+    'drf_yasg',
     'django_cleanup.apps.CleanupConfig',
     'ckeditor',
     'ckeditor_uploader',
     'query_counter',
-    'modeltranslation',
     'phonenumber_field',
+    'rest_framework',
+    'django_filters',
 ]
 
 LOCAL_APPS = [
