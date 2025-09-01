@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from django.utils.translation import gettext_lazy as _
+# from django.utils.translation import gettext_lazy as _
 
 import environ
 import os
@@ -196,22 +196,22 @@ TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
-USE_I10N = True
+# USE_I10N = True
 
 USE_TZ = True
 
-LANGUAGES = [
-    ('uz', _('Uzbek')),
-    ('en', _('English')),
-    ('ru', _('Russian')),
-    ('tr', _('Turkish')),
-]
+# LANGUAGES = [
+#     ('uz', _('Uzbek')),
+#     ('en', _('English')),
+#     ('ru', _('Russian')),
+#     ('tr', _('Turkish')),
+# ]
 
-LOCALE_PATHS = [
-    BASE_DIR / 'locale',
-]
+# LOCALE_PATHS = [
+#     BASE_DIR / 'locale',
+# ]
 
 
 # Static files (CSS, JavaScript, Images)

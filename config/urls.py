@@ -43,22 +43,8 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path('uzmovie/', admin.site.urls),
 
-    path('i18n/', include('django.conf.urls.i18n')),
-
-    # libs urls
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-
-    re_path(r'^media/(?P<path>.*)$', serve,
-            {'document_root': settings.MEDIA_ROOT}),
-    re_path(r'^static/(?P<path>.*)$', serve,
-            {'document_root': settings.STATIC_ROOT}),
-]
-
-urlpatterns += i18n_patterns(
     path('unauthorized/', custom_401_view, name='unauthorized'),
-    # Translated URLs
-    # local urls
-    #
+
     path(
         '',
         include('apps.contact.urls')
@@ -79,7 +65,44 @@ urlpatterns += i18n_patterns(
         '',
         include('apps.wishlist.urls')
     ),
-)
+
+    # path('i18n/', include('django.conf.urls.i18n')),
+
+    # libs urls
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+    re_path(r'^media/(?P<path>.*)$', serve,
+            {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,
+            {'document_root': settings.STATIC_ROOT}),
+]
+
+# urlpatterns += i18n_patterns(
+#     path('unauthorized/', custom_401_view, name='unauthorized'),
+#     # Translated URLs
+#     # local urls
+#     #
+#     path(
+#         '',
+#         include('apps.contact.urls')
+#     ),
+#     path(
+#         '',
+#         include('apps.users.urls')
+#     ),
+#     path(
+#         '',
+#         include('apps.category.urls')
+#     ),
+#     path(
+#         '',
+#         include('apps.film.urls')
+#     ),
+#     path(
+#         '',
+#         include('apps.wishlist.urls')
+#     ),
+# )
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

@@ -25,3 +25,5 @@ barcha kerakli kutbxonalarni yuklab sozlab oldik
 * Barcha modellar adminkaga professional tarzda register qilindi
 
 * Endigi navbat logikaga
+
+* Ho'sh endi biz mvt da emas drf da api chiqarmoqchimiz
