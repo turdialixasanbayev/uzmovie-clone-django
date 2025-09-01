@@ -1,4 +1,6 @@
 from django.urls import path, include
 
 
-urlpatterns = []
+urlpatterns = [
+    path('', include('apps.category.urls.category')),
+]
