@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}My Wishlist - Uzmovi Clone{% endblock %}
+
+{% block content %}
+<h2 class="text-warning mb-4">My Wishlist</h2>
+<div class="row g-4">
+    {% for item in wishlist %}
+        <div class="col-md-3">
+            <div class="card bg-dark text-light h-100">
+                <img src="{{ item.movie.poster.url }}" class="card-img-top" alt="{{ item.movie.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.movie.title }}</h5>
+                    <a href="{{ item.movie.get_absolute_url }}" class="btn btn-sm btn-warning">Watch</a>
+                    <form method="post" action="{% url 'wishlist_remove' item.movie.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <button class="btn btn-sm btn-outline-light">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>You don't have any movies in your wishlist yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
