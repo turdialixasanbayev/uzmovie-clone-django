@@ -64,23 +64,23 @@ urlpatterns = [
     path('unauthorized/', custom_401_view, name='unauthorized'),
 
     path(
-        '',
+        'api/contact/',
         include('apps.contact.urls')
     ),
     path(
-        '',
+        'api/users/',
         include('apps.users.urls')
     ),
     path(
-        '',
+        'api/categories/',
         include('apps.category.urls')
     ),
     path(
-        '',
+        'api/films/',
         include('apps.film.urls')
     ),
     path(
-        '',
+        'api/wishlist/',
         include('apps.wishlist.urls')
     ),
 
