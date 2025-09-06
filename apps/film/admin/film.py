@@ -33,6 +33,7 @@ class FilmAdmin(admin.ModelAdmin):
         'duration',
         'age_type',
         'release_date',
+        'p',
     )
     readonly_fields = (
         'id',
@@ -48,4 +49,5 @@ class FilmAdmin(admin.ModelAdmin):
         'year',
         'age_type',
         'release_date',
+        'p',
     )

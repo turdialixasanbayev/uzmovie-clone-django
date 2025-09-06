@@ -26,6 +26,15 @@ class Film(models.Model):
         SIXTEEN = 16, '16+'
         EIGHTEEN = 18, '18+'
 
+    P = (
+        (0, '240p'),
+        (1, '360p'),
+        (2, '480p'),
+        (3, '720p'),
+        (4, '1080p'),
+        (5, '4K' ),
+    )
+
     name = models.CharField(
         max_length=350,
         unique=True,
@@ -136,6 +145,13 @@ class Film(models.Model):
         help_text="The date and time when the film was added to the system",
     )
 
+    p = models.IntegerField(
+        choices=P,
+        default=2,
+        db_index=True,
+        help_text="Video quality of the film",
+    )
+
     @property
     def views_count(self) -> int:
         """
@@ -208,6 +224,7 @@ class Film(models.Model):
             models.Index(fields=["duration"]),
             models.Index(fields=["age_type"]),
             models.Index(fields=["views"]),
+            models.Index(fields=["p"]),
         ]
 
     def __str__(self) -> str:
