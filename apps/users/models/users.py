@@ -5,7 +5,14 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     """
     Custom user model with additional fields.
+
+    user_permissions = None  # Disable user permissions
+    groups = None  # Disable user groups
     """
+
+    user_permissions = None
+    groups = None
+
     class GenderChoices(models.TextChoices):
         """
         Gender choices for the user model.
