@@ -9,7 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
     Admin panel configuration for the Category model.
     """
 
-    model = Categorya
+    model = Category
     ordering = ('name',)
     search_fields = ('name',)
     prepopulated_fields = {'slug': ('name',)}
