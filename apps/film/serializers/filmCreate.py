@@ -10,3 +10,6 @@ class FilmCreateSerializer(serializers.ModelSerializer):
             'id',
             'release_date',
         ]
+
+        def create(self, validated_data):
+            return Film.objects.create(**validated_data)
