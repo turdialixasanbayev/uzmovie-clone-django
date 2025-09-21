@@ -3,3 +3,4 @@ from .countryRUDAPIView import *  # noqa
 from .filmCreate import * # noqa
 from .filmList import * # noqa
 from .filmDelete import * # noqa
+from .filmDetail import * # noqa
