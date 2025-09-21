@@ -1,15 +1,15 @@
 from rest_framework import generics, permissions
 from ..models import Film
-from ..serializers import FilmCreateSerializer
+from ..serializers import FilmUpdateSerializer
 
-
-class FilmCreateAPIView(generics.CreateAPIView):
+class FilmUpdateAPIView(generics.UpdateAPIView):
     queryset = Film.objects.all()
-    serializer_class = FilmCreateSerializer
+    serializer_class = FilmUpdateSerializer
     permission_classes = [permissions.IsAdminUser]
+    lookup_field = 'slug'
 
     def get_queryset(self):
         return Film.objects.all().select_related('category', 'country').prefetch_related('tags').order_by('release_date')
 
-    def perform_create(self, serializer):
-        serializer.save()
+    def perform_update(self, serializer):
+        return super().perform_update(serializer)

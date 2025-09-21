@@ -4,6 +4,10 @@ from ..views.filmCreate import FilmCreateAPIView
 from ..views.filmList import FilmListAPIView
 from ..views.filmDelete import FilmDeleteAPIView
 from ..views.filmDetail import FilmDetailAPIView
+from ..views.filmUpdate import FilmUpdateAPIView
+
+
+film_update_as_view = FilmUpdateAPIView.as_view()
 
 
 urlpatterns = [
@@ -26,5 +30,10 @@ urlpatterns = [
         'film_detail/<slug:slug>/',
         FilmDetailAPIView.as_view(),
         name='film_detail',
+    ),
+    path(
+        'film_update/<slug:slug>/',
+        film_update_as_view,
+        name='film_update',
     ),
 ]
