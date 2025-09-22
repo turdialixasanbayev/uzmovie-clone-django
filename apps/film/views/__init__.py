@@ -5,3 +5,5 @@ from .filmList import * # noqa
 from .filmDelete import * # noqa
 from .filmDetail import * # noqa
 from .filmUpdate import * # noqa
+from .reactionViewset import * # noqa
+from .reviewViewset import * # noqa

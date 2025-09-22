@@ -58,9 +58,9 @@ class Review(models.Model):
             models.Index(fields=["created_at"]),
             models.Index(fields=["updated_at"]),
         ]
-        constraints = [
-            models.UniqueConstraint(
-                fields=["user", "film"],
-                name="unique_user_film_review"
-            )
-        ]
+        # constraints = [
+        #     models.UniqueConstraint(
+        #         fields=["user", "film"],
+        #         name="unique_user_film_review"
+        #     )
+        # ]
