@@ -1,0 +1,1 @@
+from .wishlistSerializer import * # noqa
